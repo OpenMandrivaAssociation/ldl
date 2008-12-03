@@ -3,7 +3,7 @@
 %define name		ldl
 %define NAME		LDL
 %define version		2.0.1
-%define release		%mkrel 7
+%define release		%mkrel 8
 %define major		%{version}
 %define libname		%mklibname %{name} %{major}
 %define develname	%mklibname %{name} -d
@@ -16,8 +16,8 @@ Group:		System/Libraries
 License:	LGPL
 URL:		http://www.cise.ufl.edu/research/sparse/ldl/
 Source0:	http://www.cise.ufl.edu/research/sparse/ldl/%{NAME}-%{version}.tar.gz
-Source1:	http://www.cise.ufl.edu/research/sparse/ufconfig/UFconfig-3.2.0.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}
+BuildRequires:	suitesparse-common-devel >= 3.2.0-2
 
 %description
 LDL provides routines for performin LDL' factorization of sparse matricies.
@@ -52,12 +52,13 @@ use %{name}.
 
 %prep
 %setup -q -c 
-%setup -q -c -a 0 -a 1
-%setup -q -D -T -n %{name}-%{version}/%{NAME}
+%setup -q -D -n %{name}-%{version}/%{NAME}
+mkdir ../UFconfig
+ln -sf %{_includedir}/suitesparse/UFconfig.* ../UFconfig
 
 %build
 pushd Lib
-    %make -f Makefile CC=%__cc CFLAGS="$RPM_OPT_FLAGS -fPIC -I/usr/include/suitesparse" INC=
+    %make -f Makefile CC=%__cc CFLAGS="%{optflags} -fPIC -I%{_includedir}/suitesparse" INC=
     %__cc -shared -Wl,-soname,lib%{name}.so.%{major} -o lib%{name}.so.%{version} *.o
 popd
 
