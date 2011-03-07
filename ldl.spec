@@ -2,7 +2,7 @@
 
 %define name		ldl
 %define NAME		LDL
-%define version		2.0.2
+%define version		2.0.3
 %define release		%mkrel 1
 %define major		%{version}
 %define libname		%mklibname %{name} %{major}
