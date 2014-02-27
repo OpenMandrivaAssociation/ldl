@@ -1,11 +1,11 @@
 %define NAME		LDL
-%define major		%{version}
+%define major		2
 %define libname		%mklibname %{name} %{major}
 %define develname	%mklibname %{name} -d
 
 Name:		ldl
 Version:	2.1.0
-Release:	1
+Release:	2
 Epoch:		1
 Summary:	Routines for performing LDL' factorization of sparse matricies
 Group:		System/Libraries
@@ -20,6 +20,8 @@ LDL provides routines for performin LDL' factorization of sparse matricies.
 %package -n %{libname}
 Summary:	Library of routines for performing LDL' factorization of sparse matricies
 Group:		System/Libraries
+%define	oldname	%{mklibname %{name} 2.1.0}
+%rename		%{oldname}
 
 %description -n %{libname}
 LDL provides routines for performin LDL' factorization of sparse matricies.
