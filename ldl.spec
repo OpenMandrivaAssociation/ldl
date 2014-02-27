@@ -9,7 +9,7 @@ Release:	2
 Epoch:		1
 Summary:	Routines for performing LDL' factorization of sparse matricies
 Group:		System/Libraries
-License:	LGPL
+License:	LGPLv2+
 URL:		http://www.cise.ufl.edu/research/sparse/ldl/
 Source0:	http://www.cise.ufl.edu/research/sparse/ldl/%{NAME}-%{version}.tar.gz
 BuildRequires:	suitesparse-common-devel >= 4.0.0
