@@ -5,7 +5,7 @@
 
 Name:		ldl
 Version:	2.1.0
-Release:	2
+Release:	3
 Epoch:		1
 Summary:	Routines for performing LDL' factorization of sparse matricies
 Group:		System/Libraries
